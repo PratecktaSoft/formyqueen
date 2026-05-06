@@ -1,17 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mr">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Read My Heart ❤️</title>
+  <title>माझं मन वाच ❤️</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    *{margin:0;padding:0;box-sizing:border-box;}
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
 
     body{
       font-family:'Cormorant Garamond',serif;
@@ -20,34 +25,36 @@
       min-height:100vh;
     }
 
-    /* ── BACK BUTTON ─────────────────────── */
+    /* BACK BUTTON */
+
     .home-btn{
       position:fixed;
-      top:28px;left:28px;
+      top:28px;
+      left:28px;
       z-index:999;
       padding:13px 24px;
       background:rgba(255,255,255,0.07);
       border:1px solid rgba(255,255,255,0.18);
       backdrop-filter:blur(14px);
-      -webkit-backdrop-filter:blur(14px);
       border-radius:50px;
       color:#fff;
       text-decoration:none;
       font-family:'Poppins',sans-serif;
-      font-size:13px;font-weight:500;
+      font-size:13px;
+      font-weight:500;
       letter-spacing:1px;
-      transition:all 0.4s ease;
+      transition:0.4s;
     }
+
     .home-btn:hover{
-      background:#ffd700;color:#000;
+      background:#ffd700;
+      color:#000;
       transform:translateY(-4px);
       box-shadow:0 14px 30px rgba(255,215,0,0.35);
     }
-    @media(max-width:768px){
-      .home-btn{top:18px;left:18px;padding:11px 18px;font-size:11px;}
-    }
 
-    /* ── SECTION ──────────────────────────── */
+    /* SECTION */
+
     .heart-section{
       position:relative;
       min-height:100vh;
@@ -58,73 +65,98 @@
       overflow:hidden;
     }
 
-    /* ── BG IMAGE ─────────────────────────── */
+    /* BACKGROUND */
+
     .heart-bg{
-      position:absolute;inset:0;
-      width:100%;height:100%;
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
       object-fit:cover;
       object-position:center top;
       filter:brightness(0.22) saturate(1.2) blur(1px);
       transform:scale(1.08);
       animation:bgZoom 20s infinite alternate ease-in-out;
     }
+
     @keyframes bgZoom{
-      from{transform:scale(1.05);}
-      to{transform:scale(1.18);}
+      from{
+        transform:scale(1.05);
+      }
+      to{
+        transform:scale(1.18);
+      }
     }
 
-    /* ── OVERLAY ─────────────────────────── */
+    /* OVERLAY */
+
     .heart-overlay{
-      position:absolute;inset:0;
+      position:absolute;
+      inset:0;
       background:
         radial-gradient(ellipse at 50% 0%, rgba(180,30,60,0.18) 0%, transparent 60%),
         linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.88) 100%);
     }
 
-    /* ── FLOATING PARTICLES ──────────────── */
+    /* PARTICLES */
+
     .particles span{
       position:absolute;
       font-size:22px;
       animation:floatUp 9s ease-in-out infinite;
       opacity:0;
-      pointer-events:none;
-    }
-    .particles span:nth-child(1){left:8%;top:30%;animation-delay:0s;font-size:18px;}
-    .particles span:nth-child(2){right:12%;top:20%;animation-delay:2.5s;font-size:26px;}
-    .particles span:nth-child(3){left:22%;bottom:25%;animation-delay:5s;font-size:14px;}
-    .particles span:nth-child(4){right:20%;bottom:20%;animation-delay:1.5s;font-size:20px;}
-    .particles span:nth-child(5){left:50%;top:55%;animation-delay:3.5s;font-size:16px;}
-    .particles span:nth-child(6){left:35%;top:15%;animation-delay:6s;font-size:22px;}
-    .particles span:nth-child(7){right:8%;bottom:40%;animation-delay:4s;font-size:18px;}
-    @keyframes floatUp{
-      0%{transform:translateY(10px);opacity:0;}
-      30%{opacity:0.8;}
-      70%{opacity:0.6;}
-      100%{transform:translateY(-40px);opacity:0;}
     }
 
-    /* ── CARD ────────────────────────────── */
+    .particles span:nth-child(1){left:8%;top:30%;animation-delay:0s;}
+    .particles span:nth-child(2){right:12%;top:20%;animation-delay:2s;}
+    .particles span:nth-child(3){left:22%;bottom:25%;animation-delay:4s;}
+    .particles span:nth-child(4){right:20%;bottom:20%;animation-delay:1s;}
+    .particles span:nth-child(5){left:50%;top:55%;animation-delay:3s;}
+
+    @keyframes floatUp{
+      0%{
+        transform:translateY(10px);
+        opacity:0;
+      }
+      30%{
+        opacity:0.8;
+      }
+      100%{
+        transform:translateY(-40px);
+        opacity:0;
+      }
+    }
+
+    /* CARD */
+
     .heart-card{
-      position:relative;z-index:5;
-      width:100%;max-width:880px;
+      position:relative;
+      z-index:5;
+      width:100%;
+      max-width:880px;
       background:rgba(255,255,255,0.055);
       border:1px solid rgba(255,215,0,0.15);
       backdrop-filter:blur(22px);
-      -webkit-backdrop-filter:blur(22px);
       border-radius:40px;
       padding:75px 80px;
       box-shadow:
         0 0 0 1px rgba(255,255,255,0.04),
         0 30px 70px rgba(0,0,0,0.5),
         inset 0 1px 0 rgba(255,255,255,0.08);
-      animation:fadeUp 1.6s cubic-bezier(0.22,1,0.36,1) both;
-    }
-    @keyframes fadeUp{
-      from{opacity:0;transform:translateY(50px);}
-      to{opacity:1;transform:translateY(0);}
+      animation:fadeUp 1.6s ease both;
     }
 
-    /* ── EYEBROW ─────────────────────────── */
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(50px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
     .eyebrow{
       text-align:center;
       font-family:'Poppins',sans-serif;
@@ -137,7 +169,6 @@
       text-transform:uppercase;
     }
 
-    /* ── DECORATIVE DIVIDER ──────────────── */
     .divider{
       display:flex;
       align-items:center;
@@ -146,21 +177,26 @@
       margin:0 auto 30px;
       width:fit-content;
     }
+
     .divider-line{
-      width:60px;height:1px;
+      width:60px;
+      height:1px;
       background:linear-gradient(to right, transparent, rgba(255,215,0,0.5));
     }
+
     .divider-line.right{
       background:linear-gradient(to left, transparent, rgba(255,215,0,0.5));
     }
+
     .divider-gem{
-      width:7px;height:7px;
+      width:7px;
+      height:7px;
       background:#ffd700;
       transform:rotate(45deg);
-      opacity:0.8;
     }
 
-    /* ── TITLE ───────────────────────────── */
+    /* TITLE */
+
     .heart-card h1{
       text-align:center;
       font-family:'Cinzel',serif;
@@ -171,57 +207,54 @@
       line-height:1.2;
       letter-spacing:2px;
     }
-    .heart-card h1 span{color:#ffd700;}
 
-    /* ── SUBTITLE ────────────────────────── */
+    .heart-card h1 span{
+      color:#ffd700;
+    }
+
     .subtitle{
       text-align:center;
-      font-family:'Cormorant Garamond',serif;
       font-size:20px;
       font-style:italic;
       color:rgba(255,215,0,0.65);
       margin-bottom:50px;
-      letter-spacing:1px;
     }
 
-    /* ── CONTENT ─────────────────────────── */
+    /* CONTENT */
+
     .letter-body{
       max-width:680px;
       margin:0 auto;
     }
 
     .salutation{
-      font-size:28px;
+      font-size:30px;
       font-style:italic;
       color:#fff;
       margin-bottom:32px;
-      font-weight:300;
     }
+
     .salutation strong{
       color:#ffd700;
-      font-weight:600;
-      font-style:normal;
     }
 
     .heart-card p{
-      font-size:21px;
-      line-height:2.0;
-      color:rgba(255,255,255,0.82);
+      font-size:22px;
+      line-height:2;
+      color:rgba(255,255,255,0.84);
       margin-bottom:26px;
       font-weight:300;
     }
 
-    .heart-card p.highlight{
-      color:#fff;
+    .highlight{
+      color:#fff !important;
       font-style:italic;
-      font-size:23px;
-      line-height:1.9;
+      font-size:24px !important;
       border-left:2px solid rgba(255,215,0,0.4);
       padding-left:22px;
       margin:36px 0;
     }
 
-    /* ── SECTION BREAK ───────────────────── */
     .section-break{
       text-align:center;
       color:rgba(255,215,0,0.4);
@@ -230,11 +263,13 @@
       margin:38px 0;
     }
 
-    /* ── SIGNATURE ───────────────────────── */
+    /* SIGNATURE */
+
     .signature-block{
       margin-top:52px;
       text-align:right;
     }
+
     .signature-note{
       font-family:'Poppins',sans-serif;
       font-size:12px;
@@ -243,31 +278,54 @@
       text-transform:uppercase;
       margin-bottom:10px;
     }
+
     .signature{
       font-family:'Cinzel',serif;
       font-size:32px;
       font-weight:600;
       color:#ffd700;
     }
+
     .signature-sub{
-      font-family:'Cormorant Garamond',serif;
       font-size:17px;
       font-style:italic;
       color:rgba(255,255,255,0.4);
       margin-top:6px;
     }
 
-    /* ── RESPONSIVE ──────────────────────── */
+    /* MOBILE */
+
     @media(max-width:768px){
-      .heart-card{padding:50px 28px 45px;border-radius:28px;}
-      .heart-card h1{font-size:36px;}
-      .subtitle{font-size:16px;}
-      .heart-card p{font-size:17px;line-height:1.9;}
-      .heart-card p.highlight{font-size:18px;}
-      .salutation{font-size:22px;}
-      .signature{font-size:24px;}
+
+      .heart-card{
+        padding:50px 28px 45px;
+        border-radius:28px;
+      }
+
+      .heart-card h1{
+        font-size:36px;
+      }
+
+      .subtitle{
+        font-size:16px;
+      }
+
+      .heart-card p{
+        font-size:18px;
+      }
+
+      .highlight{
+        font-size:20px !important;
+      }
+
+      .salutation{
+        font-size:24px;
+      }
+
     }
+
   </style>
+
 </head>
 
 <body>
@@ -276,25 +334,21 @@
 
   <section class="heart-section">
 
-    <img src="./images/polaroid-3.jpg" class="heart-bg" alt="">
+    <img src="images/polaroid-3.jpg" class="heart-bg">
 
     <div class="heart-overlay"></div>
 
-    <!-- Floating particles -->
     <div class="particles">
       <span>❤️</span>
       <span>✨</span>
       <span>💫</span>
       <span>🌸</span>
       <span>💖</span>
-      <span>⭐</span>
-      <span>🌙</span>
     </div>
 
-    <!-- Main card -->
     <div class="heart-card">
 
-      <p class="eyebrow">✦ &nbsp; A Letter Written in Love &nbsp; ✦</p>
+      <p class="eyebrow">✦ &nbsp; प्रेमातून लिहिलेलं पत्र &nbsp; ✦</p>
 
       <div class="divider">
         <div class="divider-line"></div>
@@ -302,74 +356,100 @@
         <div class="divider-line right"></div>
       </div>
 
-      <h1>Read My <span>Heart</span> ❤️</h1>
-      <p class="subtitle">Because some feelings are too deep for just words…</p>
+      <h1>माझं <span>मन</span> वाच ❤️</h1>
+
+      <p class="subtitle">
+        कारण काही भावना शब्दांपेक्षा खूप खोल असतात…
+      </p>
 
       <div class="letter-body">
 
-        <p class="salutation">My Dearest <strong>Divya,</strong></p>
+        <p class="salutation">
+          माझी प्रिय <strong>दिव्या,</strong>
+        </p>
 
         <p>
-          There are moments in life when you meet someone and quietly realize —
-          the world just became a better place. You are that moment for me.
-          Every single day.
+          आयुष्यात काही क्षण असे असतात,
+          जेव्हा एखादी व्यक्ती भेटते
+          आणि नकळत जाणवतं —
+          की जग अचानक खूप सुंदर झालं आहे.
+          तू माझ्यासाठी तोच क्षण आहेस.
+          प्रत्येक दिवशी.
         </p>
 
         <p class="highlight">
-          You didn't just walk into my life, Divya.
-          You walked in and rearranged everything —
-          turned my ordinary into extraordinary,
-          and made me believe I deserved something beautiful.
+          तू फक्त माझ्या आयुष्यात आली नाहीस, दिव्या...
+          तू आलीस आणि सगळंच बदलून टाकलंस —
+          माझ्या साध्या आयुष्याला खास बनवलंस,
+          आणि मला विश्वास दिलास
+          की मीही काहीतरी सुंदर मिळवण्यास पात्र आहे.
         </p>
 
         <p>
-          I love the way you laugh when something genuinely surprises you.
-          I love how you care so deeply — about people, about little things,
-          about the kind of world you want to live in.
-          That depth in you? It pulled me in the moment I saw it.
+          तू मनापासून हसतेस ना,
+          ते मला खूप आवडतं.
+          लोकांविषयी,
+          छोट्या छोट्या गोष्टींबद्दल,
+          आणि जगाकडे पाहण्याचा तुझा दृष्टिकोन —
+          ह्याच गोष्टींनी मला तुझ्याकडे खेचलं.
         </p>
 
         <div class="section-break">· · · ✦ · · ·</div>
 
         <p>
-          Maybe I haven't always found the right words.
-          Maybe there were evenings I stayed quiet when I should have spoken.
-          But silence was never distance — it was just me,
-          holding so much for you that I didn't know where to begin.
+          कदाचित मला नेहमी योग्य शब्द सापडले नाहीत.
+          कधी कधी मी शांत राहिलो,
+          जेव्हा मला बोलायला हवं होतं.
+          पण ती शांतता कधीच अंतर नव्हती —
+          फक्त तुझ्यासाठी मनात खूप काही होतं.
         </p>
 
         <p>
-          I want you to know this: in every version of every future I've ever imagined,
-          you are there. Not because I need you to complete me —
-          but because everything feels more alive when you're part of it.
+          मी माझ्या प्रत्येक भविष्यात तुलाच पाहिलं आहे.
+          कारण तू मला पूर्ण करतेस म्हणून नाही,
+          तर तुझ्यासोबत प्रत्येक गोष्ट अधिक सुंदर वाटते म्हणून.
         </p>
 
         <p class="highlight">
-          You are not just the love of my life.
-          You are the reason I want to be the best version of myself —
-          someone worthy of standing beside you.
+          तू फक्त माझं प्रेम नाहीस...
+          तू ती व्यक्ती आहेस
+          जिच्यासाठी मला स्वतःची सर्वोत्तम आवृत्ती बनायचं आहे.
         </p>
 
         <p>
-          So on the days you feel unseen, come back to this page.
-          Because I built it for you — not with tools and code,
-          but with every feeling I've been carrying quietly in my chest.
+          ज्या दिवशी तुला वाटेल
+          की कोणी तुला समजत नाही,
+          त्या दिवशी हे पान पुन्हा उघड.
+          कारण हे पान मी फक्त कोडने नाही,
+          तर माझ्या प्रत्येक भावनेने तयार केलं आहे.
         </p>
 
         <p>
-          No matter how many seasons change, one thing will always stay the same:
-          my heart has your name written in it — in ink that never fades. 💛
+          ऋतू कितीही बदलले तरी
+          एक गोष्ट कायम राहील —
+          माझ्या हृदयावर तुझं नाव कायम लिहिलेलं असेल. 💛
         </p>
 
         <div class="section-break">· · · ✦ · · ·</div>
 
         <div class="signature-block">
-          <p class="signature-note">Always &amp; without question</p>
-          <div class="signature">Forever Yours ✨</div>
-          <div class="signature-sub">— written from the truest corner of my heart</div>
+
+          <p class="signature-note">
+            नेहमी आणि कायम
+          </p>
+
+          <div class="signature">
+            फक्त तुझाच ✨
+          </div>
+
+          <div class="signature-sub">
+            — माझ्या मनाच्या सर्वात खर्‍या कोपऱ्यातून
+          </div>
+
         </div>
 
       </div>
+
     </div>
 
   </section>
