@@ -4,90 +4,372 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Read My Heart ❤️</title>
-
-  <link rel="stylesheet" href="css/heart.css">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    body{
+      font-family:'Cormorant Garamond',serif;
+      background:#000;
+      overflow-x:hidden;
+      min-height:100vh;
+    }
+
+    /* ── BACK BUTTON ─────────────────────── */
+    .home-btn{
+      position:fixed;
+      top:28px;left:28px;
+      z-index:999;
+      padding:13px 24px;
+      background:rgba(255,255,255,0.07);
+      border:1px solid rgba(255,255,255,0.18);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border-radius:50px;
+      color:#fff;
+      text-decoration:none;
+      font-family:'Poppins',sans-serif;
+      font-size:13px;font-weight:500;
+      letter-spacing:1px;
+      transition:all 0.4s ease;
+    }
+    .home-btn:hover{
+      background:#ffd700;color:#000;
+      transform:translateY(-4px);
+      box-shadow:0 14px 30px rgba(255,215,0,0.35);
+    }
+    @media(max-width:768px){
+      .home-btn{top:18px;left:18px;padding:11px 18px;font-size:11px;}
+    }
+
+    /* ── SECTION ──────────────────────────── */
+    .heart-section{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:100px 20px 80px;
+      overflow:hidden;
+    }
+
+    /* ── BG IMAGE ─────────────────────────── */
+    .heart-bg{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      object-fit:cover;
+      object-position:center top;
+      filter:brightness(0.22) saturate(1.2) blur(1px);
+      transform:scale(1.08);
+      animation:bgZoom 20s infinite alternate ease-in-out;
+    }
+    @keyframes bgZoom{
+      from{transform:scale(1.05);}
+      to{transform:scale(1.18);}
+    }
+
+    /* ── OVERLAY ─────────────────────────── */
+    .heart-overlay{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(180,30,60,0.18) 0%, transparent 60%),
+        linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.88) 100%);
+    }
+
+    /* ── FLOATING PARTICLES ──────────────── */
+    .particles span{
+      position:absolute;
+      font-size:22px;
+      animation:floatUp 9s ease-in-out infinite;
+      opacity:0;
+      pointer-events:none;
+    }
+    .particles span:nth-child(1){left:8%;top:30%;animation-delay:0s;font-size:18px;}
+    .particles span:nth-child(2){right:12%;top:20%;animation-delay:2.5s;font-size:26px;}
+    .particles span:nth-child(3){left:22%;bottom:25%;animation-delay:5s;font-size:14px;}
+    .particles span:nth-child(4){right:20%;bottom:20%;animation-delay:1.5s;font-size:20px;}
+    .particles span:nth-child(5){left:50%;top:55%;animation-delay:3.5s;font-size:16px;}
+    .particles span:nth-child(6){left:35%;top:15%;animation-delay:6s;font-size:22px;}
+    .particles span:nth-child(7){right:8%;bottom:40%;animation-delay:4s;font-size:18px;}
+    @keyframes floatUp{
+      0%{transform:translateY(10px);opacity:0;}
+      30%{opacity:0.8;}
+      70%{opacity:0.6;}
+      100%{transform:translateY(-40px);opacity:0;}
+    }
+
+    /* ── CARD ────────────────────────────── */
+    .heart-card{
+      position:relative;z-index:5;
+      width:100%;max-width:880px;
+      background:rgba(255,255,255,0.055);
+      border:1px solid rgba(255,215,0,0.15);
+      backdrop-filter:blur(22px);
+      -webkit-backdrop-filter:blur(22px);
+      border-radius:40px;
+      padding:75px 80px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04),
+        0 30px 70px rgba(0,0,0,0.5),
+        inset 0 1px 0 rgba(255,255,255,0.08);
+      animation:fadeUp 1.6s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes fadeUp{
+      from{opacity:0;transform:translateY(50px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    /* ── EYEBROW ─────────────────────────── */
+    .eyebrow{
+      text-align:center;
+      font-family:'Poppins',sans-serif;
+      font-size:11px;
+      font-weight:500;
+      letter-spacing:6px;
+      color:#ffd700;
+      opacity:0.8;
+      margin-bottom:20px;
+      text-transform:uppercase;
+    }
+
+    /* ── DECORATIVE DIVIDER ──────────────── */
+    .divider{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin:0 auto 30px;
+      width:fit-content;
+    }
+    .divider-line{
+      width:60px;height:1px;
+      background:linear-gradient(to right, transparent, rgba(255,215,0,0.5));
+    }
+    .divider-line.right{
+      background:linear-gradient(to left, transparent, rgba(255,215,0,0.5));
+    }
+    .divider-gem{
+      width:7px;height:7px;
+      background:#ffd700;
+      transform:rotate(45deg);
+      opacity:0.8;
+    }
+
+    /* ── TITLE ───────────────────────────── */
+    .heart-card h1{
+      text-align:center;
+      font-family:'Cinzel',serif;
+      font-size:58px;
+      font-weight:700;
+      color:#fff;
+      margin-bottom:10px;
+      line-height:1.2;
+      letter-spacing:2px;
+    }
+    .heart-card h1 span{color:#ffd700;}
+
+    /* ── SUBTITLE ────────────────────────── */
+    .subtitle{
+      text-align:center;
+      font-family:'Cormorant Garamond',serif;
+      font-size:20px;
+      font-style:italic;
+      color:rgba(255,215,0,0.65);
+      margin-bottom:50px;
+      letter-spacing:1px;
+    }
+
+    /* ── CONTENT ─────────────────────────── */
+    .letter-body{
+      max-width:680px;
+      margin:0 auto;
+    }
+
+    .salutation{
+      font-size:28px;
+      font-style:italic;
+      color:#fff;
+      margin-bottom:32px;
+      font-weight:300;
+    }
+    .salutation strong{
+      color:#ffd700;
+      font-weight:600;
+      font-style:normal;
+    }
+
+    .heart-card p{
+      font-size:21px;
+      line-height:2.0;
+      color:rgba(255,255,255,0.82);
+      margin-bottom:26px;
+      font-weight:300;
+    }
+
+    .heart-card p.highlight{
+      color:#fff;
+      font-style:italic;
+      font-size:23px;
+      line-height:1.9;
+      border-left:2px solid rgba(255,215,0,0.4);
+      padding-left:22px;
+      margin:36px 0;
+    }
+
+    /* ── SECTION BREAK ───────────────────── */
+    .section-break{
+      text-align:center;
+      color:rgba(255,215,0,0.4);
+      font-size:18px;
+      letter-spacing:8px;
+      margin:38px 0;
+    }
+
+    /* ── SIGNATURE ───────────────────────── */
+    .signature-block{
+      margin-top:52px;
+      text-align:right;
+    }
+    .signature-note{
+      font-family:'Poppins',sans-serif;
+      font-size:12px;
+      letter-spacing:3px;
+      color:rgba(255,255,255,0.35);
+      text-transform:uppercase;
+      margin-bottom:10px;
+    }
+    .signature{
+      font-family:'Cinzel',serif;
+      font-size:32px;
+      font-weight:600;
+      color:#ffd700;
+    }
+    .signature-sub{
+      font-family:'Cormorant Garamond',serif;
+      font-size:17px;
+      font-style:italic;
+      color:rgba(255,255,255,0.4);
+      margin-top:6px;
+    }
+
+    /* ── RESPONSIVE ──────────────────────── */
+    @media(max-width:768px){
+      .heart-card{padding:50px 28px 45px;border-radius:28px;}
+      .heart-card h1{font-size:36px;}
+      .subtitle{font-size:16px;}
+      .heart-card p{font-size:17px;line-height:1.9;}
+      .heart-card p.highlight{font-size:18px;}
+      .salutation{font-size:22px;}
+      .signature{font-size:24px;}
+    }
+  </style>
 </head>
 
 <body>
 
+  <a href="index.html" class="home-btn">⬅ Back To Home</a>
+
   <section class="heart-section">
 
-    <!-- BACKGROUND IMAGE -->
-    <img src="./images/couplee.jpg" class="heart-bg">
+    <img src="./images/polaroid-3.jpg" class="heart-bg" alt="">
 
-    <!-- OVERLAY -->
-    <div class="heart-overlay">
+    <div class="heart-overlay"></div>
 
-        <a href="index.html" class="home-btn">
-  ⬅ Back To Home
-</a>
-    </div>
-
-    <!-- FLOATING HEARTS -->
-    <div class="floating-hearts">
+    <!-- Floating particles -->
+    <div class="particles">
       <span>❤️</span>
       <span>✨</span>
+      <span>💫</span>
+      <span>🌸</span>
       <span>💖</span>
-      <span>❤️</span>
-      <span>✨</span>
+      <span>⭐</span>
+      <span>🌙</span>
     </div>
 
-    <!-- HEART CARD -->
+    <!-- Main card -->
     <div class="heart-card">
 
-      <p class="heart-top">
-        ✦ A LETTER FROM MY SOUL ✦
-      </p>
+      <p class="eyebrow">✦ &nbsp; A Letter Written in Love &nbsp; ✦</p>
 
-      <h1>
-        Read My Heart ❤️
-      </h1>
-
-      <p>
-        Dear Divya,
-      </p>
-
-      <p>
-        If I could collect every beautiful word in the world,
-        it still wouldn’t be enough to explain how special you are to me.
-      </p>
-
-      <p>
-        You are the calm in my chaos,
-        the smile behind my happiness,
-        and the reason ordinary moments feel magical.
-      </p>
-
-      <p>
-        Maybe I made mistakes.
-        Maybe I failed to express things perfectly.
-        But one thing has always been true:
-        my heart has always chosen you.
-      </p>
-
-      <p>
-        This page is not just code.
-        It’s emotion.
-        It’s effort.
-        It’s love hidden between every line.
-      </p>
-
-      <p>
-        And no matter how angry you are,
-        you will always remain the queen of my universe. 👑
-      </p>
-
-      <div class="signature">
-        — Forever Yours ✨
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-gem"></div>
+        <div class="divider-line right"></div>
       </div>
 
+      <h1>Read My <span>Heart</span> ❤️</h1>
+      <p class="subtitle">Because some feelings are too deep for just words…</p>
+
+      <div class="letter-body">
+
+        <p class="salutation">My Dearest <strong>Divya,</strong></p>
+
+        <p>
+          There are moments in life when you meet someone and quietly realize —
+          the world just became a better place. You are that moment for me.
+          Every single day.
+        </p>
+
+        <p class="highlight">
+          You didn't just walk into my life, Divya.
+          You walked in and rearranged everything —
+          turned my ordinary into extraordinary,
+          and made me believe I deserved something beautiful.
+        </p>
+
+        <p>
+          I love the way you laugh when something genuinely surprises you.
+          I love how you care so deeply — about people, about little things,
+          about the kind of world you want to live in.
+          That depth in you? It pulled me in the moment I saw it.
+        </p>
+
+        <div class="section-break">· · · ✦ · · ·</div>
+
+        <p>
+          Maybe I haven't always found the right words.
+          Maybe there were evenings I stayed quiet when I should have spoken.
+          But silence was never distance — it was just me,
+          holding so much for you that I didn't know where to begin.
+        </p>
+
+        <p>
+          I want you to know this: in every version of every future I've ever imagined,
+          you are there. Not because I need you to complete me —
+          but because everything feels more alive when you're part of it.
+        </p>
+
+        <p class="highlight">
+          You are not just the love of my life.
+          You are the reason I want to be the best version of myself —
+          someone worthy of standing beside you.
+        </p>
+
+        <p>
+          So on the days you feel unseen, come back to this page.
+          Because I built it for you — not with tools and code,
+          but with every feeling I've been carrying quietly in my chest.
+        </p>
+
+        <p>
+          No matter how many seasons change, one thing will always stay the same:
+          my heart has your name written in it — in ink that never fades. 💛
+        </p>
+
+        <div class="section-break">· · · ✦ · · ·</div>
+
+        <div class="signature-block">
+          <p class="signature-note">Always &amp; without question</p>
+          <div class="signature">Forever Yours ✨</div>
+          <div class="signature-sub">— written from the truest corner of my heart</div>
+        </div>
+
+      </div>
     </div>
 
   </section>
