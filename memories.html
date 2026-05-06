@@ -1,235 +1,656 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Explore Memories</title>
-
-  <link rel="stylesheet" href="css/memories.css">
-
+  <title>Explore Memories ✨</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --gold:#ffd700;
+      --gold-soft:rgba(255,215,0,0.55);
+      --gold-dim:rgba(255,215,0,0.15);
+      --white:rgba(255,255,255,0.88);
+      --white-dim:rgba(255,255,255,0.5);
+      --white-faint:rgba(255,255,255,0.06);
+    }
+
+    *{margin:0;padding:0;box-sizing:border-box;}
+
+    html{scroll-behavior:smooth;}
+
+    body{
+      font-family:'Cormorant Garamond',serif;
+      background:#05030a;
+      color:#ddd;
+      overflow-x:hidden;
+    }
+
+    /* ── CURSOR GLOW ─────────────────────── */
+    .cursor-glow{
+      pointer-events:none;
+      position:fixed;
+      top:0;left:0;
+      width:380px;height:380px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,215,0,0.06) 0%, transparent 70%);
+      transform:translate(-50%,-50%);
+      z-index:0;
+      transition:opacity 0.3s;
+    }
+
+    /* ── BACK BUTTON ─────────────────────── */
+    .home-btn{
+      position:fixed;top:26px;left:26px;z-index:999;
+      padding:12px 22px;
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.15);
+      backdrop-filter:blur(14px);
+      border-radius:50px;
+      color:#fff;text-decoration:none;
+      font-family:'Poppins',sans-serif;
+      font-size:12px;font-weight:500;letter-spacing:1px;
+      transition:all 0.35s ease;
+    }
+    .home-btn:hover{
+      background:var(--gold);color:#000;
+      transform:translateY(-3px);
+      box-shadow:0 12px 28px rgba(255,215,0,0.3);
+    }
+
+    /* ══════════════════════════════════════
+       HERO SECTION
+    ══════════════════════════════════════ */
+    .memories-hero{
+      position:relative;
+      height:100vh;min-height:600px;
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+    }
+
+    .memories-bg{
+      position:absolute;inset:0;
+      width:100%;height:100%;
+      object-fit:cover;object-position:center top;
+      filter:brightness(0.2) saturate(1.3);
+      transform:scale(1.1);
+      animation:heroBgZoom 24s infinite alternate ease-in-out;
+    }
+    @keyframes heroBgZoom{
+      from{transform:scale(1.08);}
+      to{transform:scale(1.18);}
+    }
+
+    .hero-overlay{
+      position:absolute;inset:0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 30%, rgba(130,20,50,0.22) 0%, transparent 65%),
+        linear-gradient(to bottom, rgba(5,3,10,0.3) 0%, rgba(5,3,10,0.92) 100%);
+    }
+
+    /* starfield */
+    .stars{position:absolute;inset:0;overflow:hidden;}
+    .star{
+      position:absolute;
+      background:#fff;border-radius:50%;
+      animation:twinkle var(--d,4s) ease-in-out infinite;
+      opacity:0;
+    }
+    @keyframes twinkle{
+      0%,100%{opacity:0;transform:scale(1);}
+      50%{opacity:var(--op,0.7);transform:scale(1.4);}
+    }
+
+    /* floating petals */
+    .petals span{
+      position:absolute;font-size:20px;
+      animation:petalFloat var(--pd,10s) ease-in-out infinite var(--delay,0s);
+      opacity:0;pointer-events:none;
+    }
+    @keyframes petalFloat{
+      0%{transform:translateY(20px) rotate(0deg);opacity:0;}
+      25%{opacity:0.7;}
+      75%{opacity:0.5;}
+      100%{transform:translateY(-60px) rotate(30deg);opacity:0;}
+    }
+
+    .memories-content{
+      position:relative;z-index:5;
+      text-align:center;
+      padding:0 20px;
+      animation:contentFadeUp 1.8s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    @keyframes contentFadeUp{
+      from{opacity:0;transform:translateY(60px);}
+      to{opacity:1;transform:translateY(0);}
+    }
+
+    .hero-eyebrow{
+      font-family:'Poppins',sans-serif;
+      font-size:11px;font-weight:500;
+      letter-spacing:7px;text-transform:uppercase;
+      color:var(--gold);opacity:0.75;
+      margin-bottom:22px;
+    }
+
+    .hero-divider{
+      display:flex;align-items:center;justify-content:center;gap:10px;
+      margin:0 auto 28px;
+    }
+    .hd-line{
+      width:70px;height:1px;
+      background:linear-gradient(to right,transparent,rgba(255,215,0,0.55));
+    }
+    .hd-line.r{background:linear-gradient(to left,transparent,rgba(255,215,0,0.55));}
+    .hd-gem{width:6px;height:6px;background:var(--gold);transform:rotate(45deg);opacity:0.9;}
+
+    .memories-content h1{
+      font-family:'Cinzel',serif;
+      font-size:76px;font-weight:700;
+      color:#fff;
+      line-height:1.1;
+      letter-spacing:3px;
+      margin-bottom:12px;
+    }
+    .memories-content h1 span{color:var(--gold);}
+
+    .hero-description{
+      font-size:22px;font-weight:300;font-style:italic;
+      color:var(--white-dim);
+      max-width:560px;margin:0 auto 44px;
+      line-height:1.8;letter-spacing:0.5px;
+    }
+
+    /* scroll indicator */
+    .scroll-hint{
+      display:flex;flex-direction:column;align-items:center;gap:8px;
+      font-family:'Poppins',sans-serif;
+      font-size:10px;letter-spacing:3px;text-transform:uppercase;
+      color:rgba(255,215,0,0.45);
+      animation:bounceHint 2.5s ease-in-out infinite;
+    }
+    .scroll-hint::after{
+      content:'';display:block;
+      width:1px;height:40px;
+      background:linear-gradient(to bottom,rgba(255,215,0,0.5),transparent);
+    }
+    @keyframes bounceHint{
+      0%,100%{transform:translateY(0);}
+      50%{transform:translateY(8px);}
+    }
+
+    /* ══════════════════════════════════════
+       GALLERY SECTION
+    ══════════════════════════════════════ */
+    .gallery-section{
+      position:relative;z-index:2;
+      padding:100px 40px 120px;
+      max-width:1200px;
+      margin:0 auto;
+    }
+
+    /* section title */
+    .section-title{
+      text-align:center;
+      margin-bottom:80px;
+      opacity:0;transform:translateY(30px);
+      transition:opacity 0.9s ease, transform 0.9s ease;
+    }
+    .section-title.visible{opacity:1;transform:translateY(0);}
+
+    .section-title h2{
+      font-family:'Cinzel',serif;
+      font-size:48px;font-weight:600;
+      color:#fff;letter-spacing:2px;
+      margin-bottom:10px;
+    }
+    .section-title h2 span{color:var(--gold);}
+    .section-title p{
+      font-size:20px;font-style:italic;
+      color:var(--white-dim);letter-spacing:1px;
+    }
+    .title-underline{
+      width:80px;height:1px;
+      background:linear-gradient(to right,transparent,var(--gold),transparent);
+      margin:16px auto 0;
+    }
+
+    /* ── MEMORY CARDS ─────────────────────── */
+    .gallery-grid{
+      display:flex;flex-direction:column;gap:90px;
+    }
+
+    .memory-card{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:0;
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid rgba(255,215,0,0.1);
+      background:rgba(255,255,255,0.038);
+      backdrop-filter:blur(10px);
+      opacity:0;transform:translateY(60px);
+      transition:opacity 0.9s ease, transform 0.9s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+      position:relative;
+    }
+    .memory-card::before{
+      content:'';
+      position:absolute;inset:0;
+      background:linear-gradient(135deg,rgba(255,215,0,0.04) 0%,transparent 60%);
+      pointer-events:none;z-index:1;
+      opacity:0;transition:opacity 0.4s;
+    }
+    .memory-card:hover::before{opacity:1;}
+    .memory-card.visible{opacity:1;transform:translateY(0);}
+    .memory-card:hover{
+      box-shadow:0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,215,0,0.25);
+      border-color:rgba(255,215,0,0.28);
+    }
+
+    /* alternate layout */
+    .memory-card:nth-child(even){
+      grid-template-columns:1fr 1fr;
+      direction:rtl;
+    }
+    .memory-card:nth-child(even) > *{direction:ltr;}
+
+    /* image side */
+    .card-img-wrap{
+      position:relative;
+      overflow:hidden;
+      min-height:460px;
+    }
+    .card-img-wrap img{
+      width:100%;height:100%;
+      object-fit:cover;
+      display:block;
+      transform:scale(1.04);
+      transition:transform 0.8s cubic-bezier(0.22,1,0.36,1), filter 0.5s;
+      filter:brightness(0.88) saturate(1.1);
+    }
+    .memory-card:hover .card-img-wrap img{
+      transform:scale(1.1);
+      filter:brightness(0.95) saturate(1.2);
+    }
+
+    /* image shimmer overlay */
+    .card-img-wrap::after{
+      content:'';position:absolute;inset:0;
+      background:linear-gradient(120deg,transparent 40%,rgba(255,255,255,0.06) 50%,transparent 60%);
+      background-size:200% 100%;
+      opacity:0;
+      transition:opacity 0.3s;
+      animation:shimmer 2s ease infinite;
+      animation-play-state:paused;
+    }
+    .memory-card:hover .card-img-wrap::after{opacity:1;animation-play-state:running;}
+    @keyframes shimmer{
+      0%{background-position:200% 0;}
+      100%{background-position:-200% 0;}
+    }
+
+    /* number badge */
+    .card-number{
+      position:absolute;top:20px;left:20px;z-index:5;
+      width:40px;height:40px;
+      border-radius:50%;
+      background:rgba(255,215,0,0.15);
+      border:1px solid rgba(255,215,0,0.4);
+      backdrop-filter:blur(8px);
+      display:flex;align-items:center;justify-content:center;
+      font-family:'Cinzel',serif;
+      font-size:14px;font-weight:600;
+      color:var(--gold);
+    }
+
+    /* content side */
+    .card-content{
+      padding:52px 52px 52px 56px;
+      display:flex;flex-direction:column;justify-content:center;
+      position:relative;
+    }
+
+    /* decorative corner accent */
+    .card-content::before{
+      content:'';
+      position:absolute;top:0;left:0;
+      width:2px;height:60px;
+      background:linear-gradient(to bottom,var(--gold),transparent);
+      opacity:0.5;
+    }
+
+    .card-tag{
+      font-family:'Poppins',sans-serif;
+      font-size:10px;font-weight:500;
+      letter-spacing:5px;text-transform:uppercase;
+      color:var(--gold);opacity:0.7;
+      margin-bottom:14px;
+    }
+
+    .card-content h3{
+      font-family:'Cinzel',serif;
+      font-size:28px;font-weight:600;
+      color:#fff;
+      margin-bottom:24px;
+      line-height:1.3;
+      letter-spacing:0.5px;
+    }
+
+    .card-content p{
+      font-size:18.5px;
+      line-height:1.95;
+      color:rgba(255,255,255,0.72);
+      font-weight:300;
+      margin-bottom:16px;
+    }
+    .card-content p:last-of-type{margin-bottom:0;}
+
+    .card-content p em{
+      color:rgba(255,255,255,0.9);
+      font-style:italic;
+    }
+
+    /* bottom accent */
+    .card-bottom{
+      margin-top:30px;
+      display:flex;align-items:center;gap:10px;
+    }
+    .card-bottom-line{
+      flex:1;height:1px;
+      background:linear-gradient(to right,rgba(255,215,0,0.3),transparent);
+    }
+    .card-bottom-gem{
+      width:5px;height:5px;
+      background:var(--gold);
+      transform:rotate(45deg);
+      opacity:0.6;
+    }
+
+    /* ── CLOSING QUOTE ───────────────────── */
+    .closing-section{
+      text-align:center;
+      padding:80px 40px 100px;
+      max-width:700px;
+      margin:0 auto;
+      opacity:0;transform:translateY(40px);
+      transition:opacity 1s ease, transform 1s ease;
+    }
+    .closing-section.visible{opacity:1;transform:translateY(0);}
+
+    .closing-quote{
+      font-family:'Cinzel',serif;
+      font-size:36px;font-weight:600;
+      color:#fff;
+      line-height:1.5;
+      margin-bottom:20px;
+    }
+    .closing-quote span{color:var(--gold);}
+
+    .closing-sub{
+      font-size:19px;font-style:italic;
+      color:var(--white-dim);
+      line-height:1.8;
+    }
+
+    .closing-divider{
+      display:flex;align-items:center;justify-content:center;gap:12px;
+      margin:32px auto;
+    }
+    .cd-line{
+      width:80px;height:1px;
+      background:linear-gradient(to right,transparent,rgba(255,215,0,0.45));
+    }
+    .cd-line.r{background:linear-gradient(to left,transparent,rgba(255,215,0,0.45));}
+    .cd-gem{
+      width:8px;height:8px;
+      background:var(--gold);transform:rotate(45deg);opacity:0.7;
+    }
+
+    /* ── RESPONSIVE ─────────────────────── */
+    @media(max-width:860px){
+      .memory-card,
+      .memory-card:nth-child(even){
+        grid-template-columns:1fr;
+        direction:ltr;
+      }
+      .card-img-wrap{min-height:280px;}
+      .card-content{padding:36px 28px;}
+      .memories-content h1{font-size:42px;}
+      .hero-description{font-size:18px;}
+      .section-title h2{font-size:34px;}
+      .gallery-section{padding:70px 20px 90px;}
+      .gallery-grid{gap:60px;}
+      .card-content h3{font-size:22px;}
+      .card-content p{font-size:16.5px;}
+      .closing-quote{font-size:26px;}
+    }
+  </style>
 </head>
 
 <body>
 
+  <!-- cursor glow -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <a href="index.html" class="home-btn">⬅ Back To Home</a>
+
+  <!-- ══ HERO ══════════════════════════════ -->
   <section class="memories-hero">
 
-    <img src="./images/couplee.jpg" class="memories-bg">
+    <img src="./images/couplee.jpg" class="memories-bg" alt="">
+    <div class="hero-overlay"></div>
 
-    <div class="overlay">
-        <a href="index.html" class="home-btn">
-  ⬅ Back To Home
-</a>
-    </div>
+    <!-- starfield -->
+    <div class="stars" id="stars"></div>
+
+    <!-- floating petals -->
+    <div class="petals" id="petals"></div>
 
     <div class="memories-content">
+      <p class="hero-eyebrow">✦ &nbsp; Our Beautiful Story &nbsp; ✦</p>
 
-      <p class="top-text">
-        ✦ OUR BEAUTIFUL STORY ✦
+      <div class="hero-divider">
+        <div class="hd-line"></div>
+        <div class="hd-gem"></div>
+        <div class="hd-line r"></div>
+      </div>
+
+      <h1>Explore <span>Memories</span></h1>
+
+      <p class="hero-description">
+        Every smile, every stolen glance, every little moment with you
+        became a chapter of the most beautiful story I have ever lived.
       </p>
 
-      <h1>
-        Explore <span>Memories</span>
-      </h1>
-
-      <p class="description">
-        Every smile, every moment, every little memory with you
-        became a chapter of the most beautiful story of my life.
-      </p>
-
+      <div class="scroll-hint">Scroll</div>
     </div>
-
   </section>
 
-
+  <!-- ══ GALLERY ════════════════════════════ -->
   <section class="gallery-section">
 
-    <div class="section-title">
-      <h2>Golden Moments ✨</h2>
+    <div class="section-title" data-reveal>
+      <h2>Golden <span>Moments</span> ✨</h2>
       <p>Small memories. Infinite feelings.</p>
+      <div class="title-underline"></div>
     </div>
-
 
     <div class="gallery-grid">
 
-      <div class="memory-card">
-  <img src="./images/1.jpg">
+      <!-- CARD 1 -->
+      <div class="memory-card" data-reveal>
+        <div class="card-img-wrap">
+          <div class="card-number">01</div>
+          <img src="./images/1.jpg" alt="That Saree Moment">
+        </div>
+        <div class="card-content">
+          <p class="card-tag">✦ &nbsp; First Sight</p>
+          <h3>That Saree Moment ✨</h3>
+          <p>The first time I saw you in a saree, the entire world genuinely stopped for a second. You didn't just look beautiful — you looked like <em>poetry, elegance, and magic</em> woven into one person.</p>
+          <p>In that moment I realized I was looking at someone truly unforgettable. A sight I still carry in my heart every single day.</p>
+          <div class="card-bottom"><div class="card-bottom-line"></div><div class="card-bottom-gem"></div></div>
+        </div>
+      </div>
 
-  <div class="card-content">
-    <h3>That Saree Moment ✨</h3>
+      <!-- CARD 2 -->
+      <div class="memory-card" data-reveal>
+        <div class="card-img-wrap">
+          <div class="card-number">02</div>
+          <img src="./images/polaroid-4.jpg" alt="Your Pictures In My Gift">
+        </div>
+        <div class="card-content">
+          <p class="card-tag">✦ &nbsp; A Gift That Glowed</p>
+          <h3>Your Pictures In My Gift ❤️</h3>
+          <p>The moment you wore the dress I gifted you and sent me your pictures, I genuinely couldn't stop smiling for the rest of the day.</p>
+          <p>Seeing you happy in something I chose for you felt <em>completely different</em> from any feeling I had known before. It wasn't just a photo — it became one of my most precious memories, forever.</p>
+          <p>You looked absolutely breathtaking, and every picture made my heart race a little faster. That feeling? Truly priceless. ✨</p>
+          <div class="card-bottom"><div class="card-bottom-line"></div><div class="card-bottom-gem"></div></div>
+        </div>
+      </div>
 
-    <p>
-      The first time I saw you in a saree,
-      the entire world genuinely stopped for a second.
-      You didn’t just look beautiful —
-      you looked like poetry, elegance, and magic together.
-    </p>
-  </div>
-</div>
+      <!-- CARD 3 -->
+      <div class="memory-card" data-reveal>
+        <div class="card-img-wrap">
+          <div class="card-number">03</div>
+          <img src="./images/3.jpg" alt="Burger King Moments">
+        </div>
+        <div class="card-content">
+          <p class="card-tag">✦ &nbsp; Just Us</p>
+          <h3>Burger King Moments ❤️</h3>
+          <p>Sitting with you for hours, the world around us completely disappeared. I wasn't looking at anything else — only at you, listening to your voice, absorbing every little second.</p>
+          <p>That simple afternoon became one of the <em>best feelings I have ever experienced</em>. Just you, your laughter, your presence — and a moment I never wanted to end. ✨</p>
+          <div class="card-bottom"><div class="card-bottom-line"></div><div class="card-bottom-gem"></div></div>
+        </div>
+      </div>
 
+      <!-- CARD 4 -->
+      <div class="memory-card" data-reveal>
+        <div class="card-img-wrap">
+          <div class="card-number">04</div>
+          <img src="./images/4.jpg" alt="The Birthday Dress">
+        </div>
+        <div class="card-content">
+          <p class="card-tag">✦ &nbsp; Seawoods Magic</p>
+          <h3>The Birthday Dress ✨</h3>
+          <p>The day you wore the birthday dress I gifted you and came to meet me at Seawoods Station — that became one of the most unforgettable memories of my life.</p>
+          <p>Seeing you in that dress for the first time felt <em>magical</em>. You looked absolutely beautiful, elegant, and impossible to look away from.</p>
+          <p>Even today, that moment lives in my heart like a perfect photograph I never want to forget. ❤️</p>
+          <div class="card-bottom"><div class="card-bottom-line"></div><div class="card-bottom-gem"></div></div>
+        </div>
+      </div>
 
-      <div class="memory-card">
-  <img src="./images/polaroid-4.jpg">
+      <!-- CARD 5 -->
+      <div class="memory-card" data-reveal>
+        <div class="card-img-wrap">
+          <div class="card-number">05</div>
+          <img src="./images/5.jpg" alt="Everyday Meetings">
+        </div>
+        <div class="card-content">
+          <p class="card-tag">✦ &nbsp; Quiet Love</p>
+          <h3>Those Everyday Meetings ❤️</h3>
+          <p>Even during the harder times, the way you still showed up for me every single day meant more than words can ever explain. Those meetings were simple — but they became some of the most precious memories of my life.</p>
+          <p>I didn't need anything else in those moments. <em>Just sitting with you, talking with you, and watching your smile</em> was enough to make my entire world feel beautiful. ✨</p>
+          <div class="card-bottom"><div class="card-bottom-line"></div><div class="card-bottom-gem"></div></div>
+        </div>
+      </div>
 
-  <div class="card-content">
-
-    <h3>Your Pictures In My Gift ❤️</h3>
-
-    <p>
-      The moment you wore the dress I gifted you
-      and sent me your pictures,
-      I genuinely couldn’t stop smiling.
-    </p>
-
-    <p>
-      Seeing you happy in something I gave you
-      felt different.
-      It wasn’t just a picture for me —
-      it became one of my favorite memories forever.
-    </p>
-
-    <p>
-      You looked absolutely beautiful,
-      and every photo made my heart race a little faster.
-      That feeling was truly priceless. ✨
-    </p>
-
-  </div>
-</div>
-
-
-      <div class="memory-card">
-  <img src="./images/3.jpg">
-
-  <div class="card-content">
-
-    <h3>Burger King Moments ❤️</h3>
-
-    <p>
-      Sitting with you at Burger King for hours
-      felt like the world around us completely disappeared.
-    </p>
-
-    <p>
-      I wasn’t looking at anything else,
-      I was only looking at you,
-      listening to you,
-      and enjoying every little second with you.
-    </p>
-
-    <p>
-      That simple time together became one of
-      the best feelings I have ever experienced.
-      Just you, your voice, your smile,
-      and a moment I never wanted to end. ✨
-    </p>
-
-  </div>
-</div>
-
-
-      <div class="memory-card">
-  <img src="./images/4.jpg">
-
-  <div class="card-content">
-
-    <h3>The Birthday Dress ✨</h3>
-
-    <p>
-      The day you wore the birthday dress I gifted you
-      and came to meet me at Seawoods Station
-      became one of the most unforgettable memories of my life.
-    </p>
-
-    <p>
-      Seeing you in that dress for the first time
-      felt magical.
-      You looked absolutely beautiful,
-      elegant,
-      and impossible to look away from.
-    </p>
-
-    <p>
-      Even today,
-      that moment lives in my heart like a perfect memory
-      I never want to forget. ❤️
-    </p>
-
-  </div>
-</div>
-
-
-
-      <div class="memory-card">
-  <img src="./images/5.jpg">
-
-  <div class="card-content">
-
-    <h3>Those Everyday Meetings ❤️</h3>
-
-    <p>
-      Even during the time when your job was gone,
-      the way you still met me every single day
-      for almost 15 to 20 days
-      meant more to me than words can explain.
-    </p>
-
-    <p>
-      Those meetings were simple,
-      but they became some of the most precious memories
-      of my life.
-      Every day with you felt peaceful,
-      special,
-      and unforgettable.
-    </p>
-
-    <p>
-      I didn’t need anything else in those moments —
-      just sitting with you,
-      talking with you,
-      and seeing your smile
-      was enough to make my entire day beautiful. ✨
-    </p>
-
-  </div>
-</div>
-
-      <div class="memory-card">
-  <img src="./images/6.jpg">
-
-  <div class="card-content">
-
-    <h3>That Late Night At Seawoods ✨</h3>
-
-    <p>
-      The first time you, me, and Raj
-      stayed together late at night around 10 PM
-      at Seawoods Mall
-      still feels like one of the happiest memories ever.
-    </p>
-
-    <p>
-      Playing games together,
-      laughing nonstop,
-      and spending those little moments with you
-      felt so peaceful and special.
-    </p>
-
-    <p>
-      Maybe it was just a simple night for the world,
-      but for me,
-      it became a memory I’ll always keep close to my heart. ❤️
-    </p>
-
-  </div>
-</div>
+      <!-- CARD 6 -->
+      <div class="memory-card" data-reveal>
+        <div class="card-img-wrap">
+          <div class="card-number">06</div>
+          <img src="./images/6.jpg" alt="Late Night at Seawoods">
+        </div>
+        <div class="card-content">
+          <p class="card-tag">✦ &nbsp; A Night to Keep</p>
+          <h3>That Late Night At Seawoods ✨</h3>
+          <p>The first time we stayed together late into the night at Seawoods Mall still feels like one of the happiest memories I hold. Playing games, laughing without reason — those little moments with you felt so warm and rare.</p>
+          <p>Maybe it was just a simple evening for the world. But for me, <em>it became a memory I'll always keep close to my heart</em>, exactly as it was. ❤️</p>
+          <div class="card-bottom"><div class="card-bottom-line"></div><div class="card-bottom-gem"></div></div>
+        </div>
+      </div>
 
     </div>
-
   </section>
+
+  <!-- ══ CLOSING ════════════════════════════ -->
+  <div class="closing-section" data-reveal>
+    <div class="closing-divider">
+      <div class="cd-line"></div><div class="cd-gem"></div><div class="cd-line r"></div>
+    </div>
+    <div class="closing-quote">
+      Every memory with you, Divya —
+      <span>is a treasure I will carry for a lifetime.</span>
+    </div>
+    <p class="closing-sub">
+      These pages are not just photographs and words.<br>
+      They are pieces of my heart, saved just for you.
+    </p>
+    <div class="closing-divider">
+      <div class="cd-line"></div><div class="cd-gem"></div><div class="cd-line r"></div>
+    </div>
+  </div>
+
+  <script>
+    // ── cursor glow ───────────────────────
+    const glow = document.getElementById('cursorGlow');
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+    });
+
+    // ── generate stars ────────────────────
+    const starsEl = document.getElementById('stars');
+    for(let i = 0; i < 60; i++){
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.cssText = `
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        width:${Math.random()*2.5+1}px;
+        height:${s.style.width};
+        --d:${Math.random()*4+3}s;
+        --op:${Math.random()*0.5+0.3};
+        animation-delay:${Math.random()*5}s;
+      `;
+      starsEl.appendChild(s);
+    }
+
+    // ── generate petals ───────────────────
+    const emojis = ['❤️','✨','💫','🌸','💖','⭐','🌙','🌺'];
+    const petalsEl = document.getElementById('petals');
+    for(let i = 0; i < 12; i++){
+      const p = document.createElement('span');
+      p.textContent = emojis[i % emojis.length];
+      p.style.cssText = `
+        left:${Math.random()*100}%;
+        top:${Math.random()*100}%;
+        --pd:${Math.random()*7+7}s;
+        --delay:-${Math.random()*10}s;
+        font-size:${Math.random()*12+14}px;
+      `;
+      petalsEl.appendChild(p);
+    }
+
+    // ── scroll reveal ─────────────────────
+    const revealEls = document.querySelectorAll('[data-reveal]');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach((e,i) => {
+        if(e.isIntersecting){
+          const delay = e.target.dataset.delay || 0;
+          setTimeout(() => e.target.classList.add('visible'), delay * 120);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach((el,i) => {
+      el.dataset.delay = i;
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
