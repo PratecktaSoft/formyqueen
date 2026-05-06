@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>👑 A Royal Apology for Divya 👑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;0,700;1,300;1,600&family=Josefin+Sans:wght@300;400;600;700&family=Pacifico&family=Dancing+Script:wght@600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<!-- ========== LOADER ========== -->
+<div id="loader">
+  <div class="loader-logo">Divya 💕</div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div class="loader-text">Initialising Apology…</div>
+</div>
+
+<!-- ========== UTILITIES ========== -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+<canvas id="bg-canvas"></canvas>
+<canvas id="confetti-canvas"></canvas>
+<div id="float-layer"></div>
+<div id="toast">💖 She forgave me!</div>
+
+<!-- ================================================================
+     SECTION 1 — HERO
+     ================================================================ -->
+<section class="hero" id="hero">
+
+  <!-- BACKGROUND IMAGE -->
+  <img src="./images/hero-bg.jpg" alt="Divya Background" class="hero-bg">
+
+  <!-- DARK OVERLAY -->
+  <div class="hero-overlay"></div>
+
+  <!-- FLOATING PARTICLES -->
+  <div class="hero-particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- HERO CONTENT -->
+  <div class="hero-content">
+
+    <p class="hero-eyebrow">
+      ✦ A Royal Message From My Heart ✦
+    </p>
+
+    <div class="hero-crown">👑</div>
+
+    <h1 class="hero-name">
+      Divya
+    </h1>
+
+    <div class="hero-line"></div>
+
+    <p class="hero-tagline">
+      The most beautiful soul, the strongest woman,
+      and the only person capable of making my entire world
+      feel complete with just one smile.
+    </p>
+
+    <p class="hero-description">
+      This isn’t just a website.  
+      It’s a collection of feelings, memories, admiration,
+      and one honest attempt to make the queen of my universe smile again.
+    </p>
+
+    <div class="hero-buttons">
+
+      <a href="memories.html" class="hero-btn primary-btn">
+        Explore Memories
+      </a>
+
+      <a href="heart.html" class="hero-btn secondary-btn">
+        Read My Heart
+      </a>
+
+    </div>
+
+    <!-- SCROLL -->
+    <div class="scroll-hint">
+      <span>Scroll to continue</span>
+      <div class="scroll-line"></div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================================================================
+     SECTION 2 — CRIME DOSSIER
+     ================================================================ -->
+<section class="crime-section">
+  <div class="dossier-stamp">
+    <div class="dossier-stamp-inner">🔴</div>
+    <div>CLASSIFIED</div>
+    <div style="font-size:0.42rem;margin-top:2px;">Case No. 001</div>
+  </div>
+
+  <div class="s-badge reveal">📋 Official Dossier</div>
+  <h2 class="s-title reveal">My Crimes Against Divya</h2>
+  <p class="s-sub reveal">
+    The following offences have been thoroughly investigated, found 100% guilty,
+    and are hereby submitted with maximum guilt and puppy-eye energy. 🥺
+  </p>
+
+  <div class="crime-grid">
+
+    <div class="crime-card reveal d1" data-num="01">
+      <div class="crime-img">
+        <img src="images/crime-1.jpg"
+             onerror="this.src='https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&h=200&fit=crop'"
+             alt="Sorry face"/>
+        <div class="crime-img-overlay"></div>
+        <div class="crime-badge">Crime № 01</div>
+        <div class="crime-verdict">😬</div>
+      </div>
+      <div class="crime-body">
+        <div class="crime-title">Said Something Dumb</div>
+        <div class="crime-desc">
+          My mouth spoke before my brain booted up. This is a known manufacturing defect.
+          Engineers have been notified. Patch incoming: v2.0 Me — same personality, now
+          with a "think first" button.
+        </div>
+        <div class="crime-sentence">
+          🔏 Sentence: No unsupervised opinions for 30 days. All thoughts to be reviewed by Divya.
+        </div>
+      </div>
+    </div>
+
+    <div class="crime-card reveal d2" data-num="02">
+      <div class="crime-img">
+        <img src="images/crime-2.jpg"
+             onerror="this.src='https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=400&h=200&fit=crop'"
+             alt="Phone distraction"/>
+        <div class="crime-img-overlay"></div>
+        <div class="crime-badge">Crime № 02</div>
+        <div class="crime-verdict">📵</div>
+      </div>
+      <div class="crime-body">
+        <div class="crime-title">Chose Phone Over You</div>
+        <div class="crime-desc">
+          Unacceptable. This phone will be punished with reduced screen time and
+          a strongly-worded letter. You will receive upgraded attention, effective immediately.
+          Divya: Gold Tier. Phone: Checked Luggage.
+        </div>
+        <div class="crime-sentence">
+          🔏 Sentence: Phone placed in Witness Protection. You get all the attention.
+        </div>
+      </div>
+    </div>
+
+    <div class="crime-card reveal d3" data-num="03">
+      <div class="crime-img">
+        <img src="images/crime-3.jpg"
+             onerror="this.src='https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop'"
+             alt="Arguing"/>
+        <div class="crime-img-overlay"></div>
+        <div class="crime-badge">Crime № 03</div>
+        <div class="crime-verdict">🏳️</div>
+      </div>
+      <div class="crime-body">
+        <div class="crime-title">Argued While Being Wrong</div>
+        <div class="crime-desc">
+          I argued. I was wrong. You were right. I have engraved this in stone and placed it
+          in the town square. A small ceremony was held. The stone says:
+          "Divya Was Right. Again. Obviously."
+        </div>
+        <div class="crime-sentence">
+          🔏 Sentence: Full white-flag surrender. Zero explanations. Just: "You were right."
+        </div>
+      </div>
+    </div>
+
+    <div class="crime-card reveal d4" data-num="04">
+      <div class="crime-img">
+        <img src="images/crime-4.jpg"
+             onerror="this.src='https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=400&h=200&fit=crop'"
+             alt="Being slow"/>
+        <div class="crime-img-overlay"></div>
+        <div class="crime-badge">Crime № 04</div>
+        <div class="crime-verdict">🐢</div>
+      </div>
+      <div class="crime-body">
+        <div class="crime-title">Slow to Apologise</div>
+        <div class="crime-desc">
+          A turtle overtook me. A snail left me a passive-aggressive note.
+          Even glaciers issued a statement expressing disappointment.
+          I accept full responsibility. I built a whole website. I'm here now. 🙏
+        </div>
+        <div class="crime-sentence">
+          🔏 Sentence: From now on, apologies within 10 minutes. Including a gift.
+        </div>
+      </div>
+    </div>
+
+    <div class="crime-card reveal d5" data-num="05">
+      <div class="crime-img">
+        <img src="images/crime-5.jpg"
+             onerror="this.src='https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=400&h=200&fit=crop'"
+             alt="Being dramatic"/>
+        <div class="crime-img-overlay"></div>
+        <div class="crime-badge">Crime № 05</div>
+        <div class="crime-verdict">🎭</div>
+      </div>
+      <div class="crime-body">
+        <div class="crime-title">Being Unnecessarily Extra</div>
+        <div class="crime-desc">
+          I turned a molehill into a mountain range with a viewing platform and
+          gift shop. I have enrolled in "Calm Down 101." The syllabus is one page.
+          It just says "Stop." in large font.
+        </div>
+        <div class="crime-sentence">
+          🔏 Sentence: Dramatic overreactions reduced by 90%. Remaining 10% reserved for spiders.
+        </div>
+      </div>
+    </div>
+
+    <div class="crime-card reveal d6" data-num="06">
+      <div class="crime-img">
+        <img src="images/crime-6.jpg"
+             onerror="this.src='https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=400&h=200&fit=crop'"
+             alt="Made her sad"/>
+        <div class="crime-img-overlay"></div>
+        <div class="crime-badge">Crime № 06</div>
+        <div class="crime-verdict">💔</div>
+      </div>
+      <div class="crime-body">
+        <div class="crime-title">Made You Sad</div>
+        <div class="crime-desc">
+          This is the one that matters. Your smile is my single favourite thing
+          in this world. I never, ever want to dim it. This one I am truly,
+          from the bottom of my heart, sorry for. 🥺
+        </div>
+        <div class="crime-sentence">
+          🔏 Sentence: Lifetime commitment to protecting your smile. No parole needed.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 3 — OFFICIAL BRAIN SCAN (FUNNY NEW)
+     ================================================================ -->
+<section class="brain-section">
+  <div class="s-badge reveal">🔬 Medical Evidence</div>
+  <h2 class="s-title reveal">His Brain: Scan Results</h2>
+  <p class="s-sub reveal">
+    Independent experts conducted a full MRI of the accused's brain.
+    The results are both illuminating and deeply concerning.
+  </p>
+
+  <div class="brain-container reveal" style="margin:2rem auto;">
+    <svg class="brain-svg" viewBox="0 0 340 300" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="brainGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#2D0A40"/>
+          <stop offset="100%" stop-color="#1A0F2E"/>
+        </radialGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+      </defs>
+      <!-- Brain outline -->
+      <ellipse cx="170" cy="155" rx="130" ry="115" fill="url(#brainGrad)"
+               stroke="rgba(201,116,138,0.25)" stroke-width="1.5"/>
+      <!-- Brain divisions -->
+      <path d="M170 50 Q200 80 195 120 Q210 140 200 165 Q205 190 185 210"
+            fill="none" stroke="rgba(201,116,138,0.12)" stroke-width="1"/>
+      <path d="M170 50 Q140 80 145 120 Q130 140 140 165 Q135 190 155 210"
+            fill="none" stroke="rgba(201,116,138,0.12)" stroke-width="1"/>
+      <line x1="170" y1="50" x2="170" y2="260" stroke="rgba(201,116,138,0.1)" stroke-width="1"/>
+      <!-- Region: DIVYA (glowing, active) -->
+      <circle cx="170" cy="110" r="42" fill="rgba(201,116,138,0.15)"
+              stroke="rgba(201,116,138,0.5)" stroke-width="1.5" filter="url(#glow)"/>
+      <circle cx="170" cy="110" r="18" fill="rgba(201,116,138,0.25)"/>
+      <text x="170" y="115" text-anchor="middle" font-size="11" fill="#E8A4B8"
+            font-family="Josefin Sans" font-weight="700" letter-spacing="1">DIVYA</text>
+      <!-- Region: FOOD -->
+      <circle cx="120" cy="185" r="30" fill="rgba(212,175,55,0.08)"
+              stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+      <text x="120" y="190" text-anchor="middle" font-size="9" fill="#D4AF37"
+            font-family="Josefin Sans">FOOD</text>
+      <!-- Region: MISTAKES -->
+      <circle cx="222" cy="185" r="34" fill="rgba(248,113,113,0.08)"
+              stroke="rgba(248,113,113,0.25)" stroke-width="1"/>
+      <text x="222" y="188" text-anchor="middle" font-size="8" fill="#f87171"
+            font-family="Josefin Sans">MISTAKES</text>
+      <text x="222" y="198" text-anchor="middle" font-size="7" fill="rgba(248,113,113,0.6)"
+            font-family="Josefin Sans">(large region)</text>
+      <!-- Region: SLEEP -->
+      <circle cx="148" cy="228" r="20" fill="rgba(196,181,253,0.06)"
+              stroke="rgba(196,181,253,0.2)" stroke-width="1"/>
+      <text x="148" y="233" text-anchor="middle" font-size="8" fill="#C4B5FD"
+            font-family="Josefin Sans">SLEEP</text>
+      <!-- Region: SPORTS -->
+      <circle cx="198" cy="232" r="18" fill="rgba(74,222,128,0.06)"
+              stroke="rgba(74,222,128,0.2)" stroke-width="1"/>
+      <text x="198" y="237" text-anchor="middle" font-size="8" fill="#4ade80"
+            font-family="Josefin Sans">SPORTS</text>
+      <!-- Scan lines -->
+      <line x1="40" y1="155" x2="300" y2="155" stroke="rgba(201,116,138,0.06)" stroke-width="40"/>
+      <line x1="40" y1="155" x2="300" y2="155" stroke="rgba(201,116,138,0.15)" stroke-width="1"
+            stroke-dasharray="4,3">
+        <animate attributeName="y1" from="50" to="260" dur="2.5s" repeatCount="indefinite"/>
+        <animate attributeName="y2" from="50" to="260" dur="2.5s" repeatCount="indefinite"/>
+      </line>
+      <!-- Pulse ring around DIVYA -->
+      <circle cx="170" cy="110" r="45" fill="none"
+              stroke="rgba(201,116,138,0.4)" stroke-width="1">
+        <animate attributeName="r" from="42" to="60" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" from="0.4" to="0" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+
+  <div class="brain-report reveal" style="max-width:560px;width:100%;">
+    <div style="font-size:0.65rem;letter-spacing:4px;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;">
+      🏥 NeuroScan Report — Patient: Him
+    </div>
+    <div class="brain-report-row">
+      <span class="brain-report-label">Active Neurons</span>
+      <span class="brain-report-val yellow">3 of 86 billion</span>
+    </div>
+    <div class="brain-report-row">
+      <span class="brain-report-label">Divya Region Activity</span>
+      <span class="brain-report-val green">🟢 HYPERACTIVE (100%)</span>
+    </div>
+    <div class="brain-report-row">
+      <span class="brain-report-label">Common Sense Module</span>
+      <span class="brain-report-val red">🔴 OFFLINE (error 404)</span>
+    </div>
+    <div class="brain-report-row">
+      <span class="brain-report-label">Apology Processing Speed</span>
+      <span class="brain-report-val red">🔴 Very Slow (turtle-level)</span>
+    </div>
+    <div class="brain-report-row">
+      <span class="brain-report-label">Love for Divya</span>
+      <span class="brain-report-val green">🟢 ∞ (cannot measure)</span>
+    </div>
+    <div class="brain-report-row">
+      <span class="brain-report-label">Diagnosis</span>
+      <span class="brain-report-val" style="color:var(--blush);">Completely Smitten. Chronically.</span>
+    </div>
+    <div style="margin-top:1rem;font-size:0.75rem;color:var(--dimmed);font-style:italic;">
+      * Disclaimer: The "Mistakes" region is currently being surgically reduced. The "Divya" region is permanent and non-removable. — Dr. Apology, MD
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 4 — DIVYA'S MOOD WEATHER REPORT (FUNNY NEW)
+     ================================================================ -->
+<section class="weather-section">
+  <div class="s-badge reveal">🌦 Live Forecast</div>
+  <h2 class="s-title reveal">Divya's Mood Forecast</h2>
+  <p class="s-sub reveal">Updated in real-time. Accuracy: 100%. Prepared by the Certified Institute of You're In Trouble, Bro.</p>
+
+  <div class="weather-card reveal" style="max-width:640px;width:100%;">
+    <div class="weather-header">
+      <div>
+        <div class="weather-location">📍 Divya's Heart · Current Conditions</div>
+        <div class="weather-date">Actively Furious Season</div>
+        <div class="weather-desc" style="margin-top:0.5rem;">Until Further Notice (apology required to update)</div>
+      </div>
+      <div>
+        <div class="weather-main">⛈️</div>
+        <div class="weather-temp">100°💢</div>
+        <div class="weather-desc">Anger Index</div>
+      </div>
+    </div>
+
+    <div class="weather-grid">
+      <div class="weather-stat">
+        <div class="weather-stat-icon">😤</div>
+        <div class="weather-stat-val">MAXIMUM</div>
+        <div class="weather-stat-label">Anger Level</div>
+      </div>
+      <div class="weather-stat">
+        <div class="weather-stat-icon">🌩️</div>
+        <div class="weather-stat-val">98%</div>
+        <div class="weather-stat-label">Storm Chance</div>
+      </div>
+      <div class="weather-stat">
+        <div class="weather-stat-icon">👁️</div>
+        <div class="weather-stat-val">DEADLY</div>
+        <div class="weather-stat-label">Eye Contact</div>
+      </div>
+      <div class="weather-stat">
+        <div class="weather-stat-icon">🥺</div>
+        <div class="weather-stat-val">2%</div>
+        <div class="weather-stat-label">Forgiveness</div>
+      </div>
+    </div>
+
+    <div class="weather-forecast-row">
+      <div class="weather-forecast-day today">
+        <div class="forecast-day-name">TODAY</div>
+        <div class="forecast-icon">⛈️</div>
+        <div class="forecast-chance">FURIOUS</div>
+      </div>
+      <div class="weather-forecast-day">
+        <div class="forecast-day-name">IF SORRY</div>
+        <div class="forecast-icon">🌧️</div>
+        <div class="forecast-chance">Partial Rain</div>
+      </div>
+      <div class="weather-forecast-day">
+        <div class="forecast-day-name">IF HUGGED</div>
+        <div class="forecast-icon">🌥️</div>
+        <div class="forecast-chance">Cloudy</div>
+      </div>
+      <div class="weather-forecast-day">
+        <div class="forecast-day-name">IF FOOD</div>
+        <div class="forecast-icon">⛅</div>
+        <div class="forecast-chance">Improving</div>
+      </div>
+      <div class="weather-forecast-day">
+        <div class="forecast-day-name">FORGIVEN</div>
+        <div class="forecast-icon">☀️</div>
+        <div class="forecast-chance">Sunshine!</div>
+      </div>
+    </div>
+
+    <div class="weather-warning">
+      ⚠️ <strong style="color:var(--gold);">SEVERE WEATHER ADVISORY:</strong>
+      Residents are advised to approach with extreme caution. Do not make excuses.
+      Bring: (1) A genuine apology, (2) Her favourite food, (3) Zero attitude.
+      Expect conditions to improve dramatically once apology is accepted. ☀️ Forecast: Beautiful.
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 5 — POLAROID GALLERY
+     ================================================================ -->
+<section class="gallery-section">
+  <div class="s-badge reveal">📸 Evidence of Perfection</div>
+  <h2 class="s-title reveal">Divya In Every Mood</h2>
+  <p class="s-sub reveal">
+    Even when she's furious. Even at 3am. Even mid-argument. Still the most
+    beautiful person I've ever seen. This is both fact and a problem. 😏
+  </p>
+  <div class="polaroid-scene reveal">
+    <div class="polaroid" style="--rot:-6deg;">
+      <img src="images/polaroid-1.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1490750967868-88df5691cc5a?w=200&h=200&fit=crop'"
+           alt="Her smile"/>
+      <div class="polaroid-caption">her smile 🌸</div>
+    </div>
+    <div class="polaroid" style="--rot:4deg;">
+      <img src="images/polaroid-2.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1533038590840-1cde6e668a91?w=200&h=200&fit=crop'"
+           alt="Our sunset"/>
+      <div class="polaroid-caption">our sunset 🌅</div>
+    </div>
+    <div class="polaroid" style="--rot:-3deg;">
+      <img src="images/polaroid-3.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=200&h=200&fit=crop'"
+           alt="Like flowers"/>
+      <div class="polaroid-caption">like flowers 🌷</div>
+    </div>
+    <div class="polaroid" style="--rot:7deg;">
+      <img src="images/polaroid-4.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?w=200&h=200&fit=crop'"
+           alt="Her eyes"/>
+      <div class="polaroid-caption">her eyes ✨</div>
+    </div>
+    <div class="polaroid" style="--rot:-5deg;">
+      <img src="images/polaroid-5.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1502481851512-e9e2529bfbf9?w=200&h=200&fit=crop'"
+           alt="Her vibe"/>
+      <div class="polaroid-caption">her whole vibe 💕</div>
+    </div>
+    <div class="polaroid" style="--rot:3deg;">
+      <img src="images/polaroid-6.jpg"
+           onerror="this.src='https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=200&h=200&fit=crop'"
+           alt="My whole world"/>
+      <div class="polaroid-caption">my whole world 🌌</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 6 — ANGER METER
+     ================================================================ -->
+<section class="anger-section">
+  <div class="s-badge reveal">🌡️ Live Measurement</div>
+  <h2 class="s-title reveal">Divya's Anger Level™</h2>
+
+  <div class="reveal" style="margin-top:1rem;">
+    <div class="anger-dial-wrap">
+      <div class="anger-dial-arc"></div>
+      <div class="anger-needle" id="angerNeedle"></div>
+      <div class="anger-value" id="angerVal">🔥</div>
+    </div>
+    <div class="anger-bar-wrap"><div class="anger-bar-fill" id="angerFill"></div></div>
+    <div class="anger-stage" id="angerStage">FURIOUS MODE 🔥</div>
+  </div>
+
+  <div class="anger-img reveal">
+    <img src="images/puppy-sad.jpg"
+         onerror="this.src='images/sad.jpg'"
+         alt="Sad puppy"/>
+  </div>
+  <p class="reveal" style="font-style:italic;color:var(--blush);font-size:0.88rem;max-width:380px;">
+    "Me, sitting outside Divya's patience waiting for re-entry clearance." 🐶
+  </p>
+
+  <div class="anger-btns reveal">
+    <button class="btn-angry" onclick="clickAngry()">😤 Still Angry!</button>
+    <button class="btn-forgive" id="forgiveRunBtn" onmouseover="runAway(this)" onclick="partialForgive()">
+      🥺 Maybe a little…?
+    </button>
+  </div>
+  <div id="anger-msg"></div>
+</section>
+
+<!-- ================================================================
+     SECTION 7 — LOVE LETTERS
+     ================================================================ -->
+<section class="letters-section">
+  <div class="s-badge reveal">💌 From the Heart</div>
+  <h2 class="s-title reveal">Why I Love You, Divya</h2>
+  <p class="s-sub reveal">The honest truth. No edits. No take-backs. Just me, being embarrassingly sincere.</p>
+
+  <div class="letter-wrap" style="margin-top:2rem;">
+    <div class="letter reveal-left d1">
+      <div class="letter-num">Reason № 01</div>
+      <p class="letter-text">Your <strong>smile</strong> is genuinely illegal. No person should be allowed to be this cute while also being this powerful. I plan to report you to the Ministry of Unfair Levels of Adorableness.</p>
+    </div>
+    <div class="letter reveal-right d2">
+      <div class="letter-num">Reason № 02</div>
+      <p class="letter-text">The way you <strong>care for everyone</strong> without asking for anything in return makes you the most beautiful soul I have ever encountered. I don't deserve you — but I'm going to spend forever trying to anyway.</p>
+    </div>
+    <div class="letter reveal-left d3">
+      <div class="letter-num">Reason № 03</div>
+      <p class="letter-text">Even when you're <strong>angry at me</strong>, you're adorable. Yes. Even right now. This note is proof I'm smiling while writing it, which probably isn't helping my case. Sorry not sorry. 🥹</p>
+    </div>
+    <div class="letter reveal-right d4">
+      <div class="letter-num">Reason № 04</div>
+      <p class="letter-text">You make me <strong>want to be better.</strong> A better partner. A better human. Every day you push me to try harder without even meaning to. That's a genuine superpower, Divya. A very unfair one.</p>
+    </div>
+    <div class="letter reveal-left d5">
+      <div class="letter-num">Reason № ∞</div>
+      <p class="letter-text">I could fill a library and still not finish. But the simplest truth is: <strong>I just love you.</strong> All of you. Happy you, sleepy you, silly you, and yes — absolutely furious with me you. Always and completely. 💖</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 8 — CERTIFICATE OF WRONGDOING (NEW LUXURY/FUNNY)
+     ================================================================ -->
+<section class="cert-section">
+  <div class="s-badge reveal">📜 Official Documentation</div>
+  <h2 class="s-title reveal">Certificate of Being Wrong</h2>
+  <p class="s-sub reveal">Issued by the International Court of Divya. Legally binding in all emotional jurisdictions.</p>
+
+  <div class="certificate reveal" style="max-width:680px;width:100%;margin-top:1.5rem;text-align:center;">
+    <div class="cert-header">✦ &nbsp; The International Court of Divya &nbsp; ✦</div>
+    <div class="cert-title">Certificate of Complete<br/>and Utter Wrongness</div>
+    <div class="cert-sub">Awarded With Great Reluctance</div>
+
+    <div class="cert-divider">✦</div>
+
+    <div class="cert-body">
+      This document certifies that the undersigned,
+      <em>known as "Him" / "The Accused" / "That Idiot"</em>, has been found
+      guilty of the following offences against the sovereign dignity of
+      <em>Her Highness Divya</em>, and has subsequently built an entire
+      website as evidence of repentance. The court finds this both
+      ridiculous and <em>slightly charming.</em>
+    </div>
+
+    <ul class="cert-crimes" style="text-align:left;display:inline-block;">
+      <li>§1.1 — Speaking before thinking (chronic, repeated offence)</li>
+      <li>§1.2 — Wrongful arguing while being demonstrably incorrect</li>
+      <li>§1.3 — Tardiness in the delivery of apologies</li>
+      <li>§1.4 — General dumbness in the presence of someone much smarter</li>
+      <li>§1.5 — Causing sadness to a person who deserves only joy</li>
+    </ul>
+
+    <div class="cert-divider">✦</div>
+
+    <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;align-items:center;">
+      <div class="cert-seal">🔏</div>
+      <div style="text-align:center;">
+        <div style="font-size:0.75rem;color:rgba(212,175,55,0.4);margin-bottom:0.3rem;">VERDICT</div>
+        <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--gold);font-weight:600;">
+          Guilty. Obviously.
+        </div>
+      </div>
+      <div class="cert-seal">👑</div>
+    </div>
+
+    <div class="cert-footer" style="margin-top:1.5rem;justify-content:center;gap:2rem;">
+      <div>
+        <div class="cert-sig">Divya ♛</div>
+        <div class="cert-sig-label">Chief Justice &amp; Only Judge That Matters</div>
+      </div>
+      <div>
+        <div class="cert-sig">The Guilty Party</div>
+        <div class="cert-sig-label">Defendant / Apologetic Disaster</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 9 — QUIZ
+     ================================================================ -->
+<section class="quiz-section">
+  <div class="s-badge reveal">🎮 Official Test</div>
+  <h2 class="s-title reveal">The Divya Aptitude Quiz</h2>
+  <p class="s-sub reveal">Required curriculum. Passing is mandatory. Designed by Divya's logic, scored by the universe.</p>
+
+  <div class="quiz-box reveal" id="quizBox">
+    <p class="quiz-question" id="qText"></p>
+    <div class="quiz-options" id="qOptions"></div>
+    <div class="quiz-result" id="qResult"></div>
+    <div class="quiz-nav">
+      <div>
+        <div class="q-progress" id="qProg">Question 1 of 5</div>
+        <div class="q-progress-bar"><div class="q-progress-fill" id="qFill" style="width:20%"></div></div>
+      </div>
+      <button class="q-next" id="qNext" onclick="nextQ()">Next →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 10 — TIMELINE
+     ================================================================ -->
+<section class="timeline-section">
+  <div class="s-badge reveal">📅 Our Story</div>
+  <h2 class="s-title reveal">Moments That Matter</h2>
+
+  <div class="timeline reveal">
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <div class="t-card">
+        <div class="t-emoji">✨</div>
+        <div class="t-label">The Beginning</div>
+        <div class="t-text">The universe conspired to do something very right the day I met you. I had no idea my life was about to get incomprehensibly better.</div>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <div class="t-card">
+        <div class="t-emoji">😂</div>
+        <div class="t-label">First Laugh Together</div>
+        <div class="t-text">You laughed and I thought — okay, I'm done. This is the person I want to make laugh every single day for the rest of time.</div>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <div class="t-card">
+        <div class="t-emoji">🌙</div>
+        <div class="t-label">Late Night Conversations</div>
+        <div class="t-text">Those talks that started at 10pm and ended at 4am. Time completely forgot to exist. I never wanted them to stop.</div>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <div class="t-card">
+        <div class="t-emoji">😤</div>
+        <div class="t-label">Right Now — This Fight</div>
+        <div class="t-text">Okay yes, I messed up. But I built an entire website about it. With an official certificate. That's got to count for something. Right? 🥺</div>
+      </div>
+    </div>
+    <div class="t-item">
+      <div class="t-dot"></div>
+      <div class="t-card">
+        <div class="t-emoji">🔮</div>
+        <div class="t-label">Everything Coming Next</div>
+        <div class="t-text">A million adventures. A thousand laughs. All waiting for us — right after you click that button at the bottom of this page. 😇</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 11 — PROMISES
+     ================================================================ -->
+<section class="promise-section">
+  <div class="s-badge reveal">🤞 Sworn Promises</div>
+  <h2 class="s-title reveal">What I Promise You</h2>
+  <p class="s-sub reveal">Legally binding in the court of love. Non-negotiable. Notarised by my heart.</p>
+
+  <div class="promise-grid reveal" style="margin-top:2rem;">
+    <div class="promise-card d1">
+      <div class="p-icon">🌙</div>
+      <div class="p-title">Every Night</div>
+      <div class="p-text">You will never sleep without knowing I love you, no matter what happened that day. This is non-negotiable.</div>
+    </div>
+    <div class="promise-card d2">
+      <div class="p-icon">👂</div>
+      <div class="p-title">Actually Listen</div>
+      <div class="p-text">I will listen first, speak second. I've uninstalled "talking while thinking" and replaced it with "listening properly."</div>
+    </div>
+    <div class="promise-card d3">
+      <div class="p-icon">😂</div>
+      <div class="p-title">Make You Laugh</div>
+      <div class="p-text">Every. Single. Day. Even on days you are trying very hard not to laugh at my ridiculous face. Especially those days.</div>
+    </div>
+    <div class="promise-card d4">
+      <div class="p-icon">🛡️</div>
+      <div class="p-title">Your Safe Place</div>
+      <div class="p-text">I will always be your safe harbour. Your problems are my problems. Your peace is my absolute priority.</div>
+    </div>
+    <div class="promise-card d5">
+      <div class="p-icon">🌹</div>
+      <div class="p-title">Never Take You For Granted</div>
+      <div class="p-text">You are the best thing in my life. I know it. I will act like it. I am acting like it. Starting now.</div>
+    </div>
+    <div class="promise-card d6">
+      <div class="p-icon">📈</div>
+      <div class="p-title">Keep Improving</div>
+      <div class="p-text">I will continue becoming the person you deserve. Daily. Without excuses. You inspire me to do better.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 12 — TERMS & CONDITIONS (FUNNY NEW)
+     ================================================================ -->
+<section class="terms-section">
+  <div class="s-badge reveal">📄 Legal Document</div>
+  <h2 class="s-title reveal">Terms &amp; Conditions of Forgiveness</h2>
+  <p class="s-sub reveal">Please read carefully before accepting. By forgiving me, you agree to the following binding conditions.</p>
+
+  <div class="terms-box reveal" style="max-width:680px;width:100%;margin-top:1.5rem;">
+    <div class="terms-title">Forgiveness Agreement v1.0</div>
+    <div class="terms-ver">Effective Date: The moment you smile at this · Reference: Case No. IDidSomethingDumb-2024</div>
+
+    <ul class="terms-list">
+      <li>
+        <span class="terms-num">§ 1.1</span>
+        <span>By accepting this apology, <strong>you retain all rights</strong> to bring this incident up at any future point in time, including but not limited to: dinner, road trips, and arguments about completely unrelated things. This right is perpetual and irrevocable.</span>
+      </li>
+      <li>
+        <span class="terms-num">§ 1.2</span>
+        <span>The <strong>Guilty Party agrees</strong> to purchase your favourite food within 48 hours of forgiveness being granted. Failure to comply results in immediate reinstatement of full anger level.</span>
+      </li>
+      <li>
+        <span class="terms-num">§ 1.3</span>
+        <span>A <strong>mandatory forgiveness hug</strong> shall be delivered within 5 minutes of the "I Forgive You" button being clicked. Duration: Minimum 30 seconds. No escape clauses permitted.</span>
+      </li>
+      <li>
+        <span class="terms-num">§ 1.4</span>
+        <span>The accused <strong>shall not</strong> under any circumstances say "See? I knew you'd forgive me" or "I knew it would blow over." Violation results in immediate re-anger and a further 2-week probation period.</span>
+      </li>
+      <li>
+        <span class="terms-num">§ 1.5</span>
+        <span>Divya reserves the right to <strong>remain slightly dramatic</strong> for up to 24 hours after official forgiveness, purely for the enjoyment of the dramatic exit. This is accepted. This is valid. This is, frankly, deserved.</span>
+      </li>
+      <li>
+        <span class="terms-num">§ 1.6</span>
+        <span>By scrolling this far, <strong>you acknowledge</strong> that building an entire website, including a legal certificate, a brain scan, and a weather report, is a form of love so embarrassingly genuine that it probably deserves at least a small smile. 🥺</span>
+      </li>
+    </ul>
+
+    <div class="terms-accept">
+      ⚖️ <strong style="color:var(--silver);">IMPORTANT:</strong> By clicking "I Forgive You" below, you confirm that you have read, partially skimmed, or scrolled past these terms, and agree to grant forgiveness in exchange for the above promises, one hug, and immediate food procurement. This agreement is governed by the laws of love and basic human decency.
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+     SECTION 13 — FINAL
+     ================================================================ -->
+<section class="final-section">
+  <span class="final-heart reveal">❤️</span>
+  <h2 class="final-title reveal">Please Forgive Me?</h2>
+  <p class="final-msg reveal">
+    Whatever happened — I am truly sorry, Divya. You mean absolutely everything
+    to me. No argument, no bad day, no stupid thing I said, will ever be
+    bigger than us. I choose you. Every single time. Always.
+  </p>
+  <p class="final-ps reveal">( Now please stop being angry so I can hug you. I've been rehearsing the hug for 3 days. )</p>
+
+  <div class="final-img reveal">
+    <img src="images/couple.jpg"
+         onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=260&h=170&fit=crop'"
+         alt="Us"/>
+  </div>
+
+  <button class="forgive-btn reveal" onclick="triggerForgiveness()" id="mainForgiveBtn">
+    💖 &nbsp; Okay Fine, I Forgive You &nbsp; 💖
+  </button>
+
+  <p class="reveal" style="color:var(--dimmed);font-size:0.75rem;margin-top:0.8rem;letter-spacing:0.5px;">
+    ( See § 1.3 for hug delivery timeline. Terms apply. )
+  </p>
+</section>
+
+<script src="js/main.js"></script>
+</body>
+</html>
